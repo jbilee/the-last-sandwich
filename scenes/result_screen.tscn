@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2n4j706gowqy"]
+
+[ext_resource type="Script" path="res://scripts/result_screen.gd" id="1_g77m4"]
+[ext_resource type="AudioStream" uid="uid://cgsl04whpf44b" path="res://assets/sounds/easy-peasy.mp3" id="2_87dea"]
+[ext_resource type="PackedScene" uid="uid://clfpstq6xma2l" path="res://scenes/bg.tscn" id="2_kr52o"]
+[ext_resource type="FontFile" uid="uid://cg3drf2skl81a" path="res://assets/SugarpunchDEMO.otf" id="3_gh5xb"]
+
+[sub_resource type="Theme" id="Theme_7ruo2"]
+default_font = ExtResource("3_gh5xb")
+default_font_size = 0
+
+[sub_resource type="Theme" id="Theme_ylsaj"]
+default_font = ExtResource("3_gh5xb")
+
+[sub_resource type="Theme" id="Theme_ryxw5"]
+default_font = ExtResource("3_gh5xb")
+
+[node name="ResultScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g77m4")
+
+[node name="BG" parent="." instance=ExtResource("2_kr52o")]
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -174.5
+offset_right = 76.0
+offset_bottom = -125.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7ruo2")
+theme_override_colors/font_color = Color(0.690196, 0.345098, 0.301961, 1)
+theme_override_font_sizes/font_size = 66
+text = "That's a wrap!"
+
+[node name="FinalScore" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -66.5
+offset_right = 20.0
+offset_bottom = -27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ylsaj")
+theme_override_colors/font_color = Color(0.690196, 0.345098, 0.301961, 1)
+theme_override_font_sizes/font_size = 50
+
+[node name="ServeCount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = 6.5
+offset_right = 71.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ryxw5")
+theme_override_colors/font_color = Color(0.690196, 0.345098, 0.301961, 1)
+theme_override_font_sizes/font_size = 50
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = 143.0
+offset_right = -21.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Replay"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 21.0
+offset_top = 143.0
+offset_right = 171.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Quit"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_87dea")
+volume_db = -15.0
+autoplay = true
+
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

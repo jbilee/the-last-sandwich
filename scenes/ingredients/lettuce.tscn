@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://rnpye73m8fyv"]
+
+[ext_resource type="Texture2D" uid="uid://dbhjwaym3f2y5" path="res://assets/images/lettuce.png" id="1_v4u70"]
+
+[node name="Lettuce" type="Sprite2D"]
+texture = ExtResource("1_v4u70")

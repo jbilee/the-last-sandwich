@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkc5kn0yt7wmp"]
+
+[ext_resource type="Texture2D" uid="uid://gii0fk1rjnhp" path="res://assets/images/bread.png" id="1_x8d3r"]
+[ext_resource type="Texture2D" uid="uid://dbhjwaym3f2y5" path="res://assets/images/lettuce.png" id="2_6ooie"]
+
+[node name="Pattern13" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x8d3r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
+texture = ExtResource("2_6ooie")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("2_6ooie")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(0, -45)
+texture = ExtResource("2_6ooie")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(0, -60)
+texture = ExtResource("1_x8d3r")

@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0dryqk0xvrk7"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_gkg2c"]
+[ext_resource type="Texture2D" uid="uid://b4re4ejwx3e6f" path="res://assets/images/bgshadow.png" id="2_irkfj"]
+[ext_resource type="PackedScene" uid="uid://crnlry2m7syq8" path="res://scenes/ingredient_spawner.tscn" id="2_vjscj"]
+[ext_resource type="PackedScene" uid="uid://d3uak4owek46a" path="res://scenes/stack.tscn" id="3_5txv0"]
+[ext_resource type="PackedScene" uid="uid://dujocnubmqxou" path="res://scenes/customer_spawner.tscn" id="3_pyo8a"]
+[ext_resource type="PackedScene" uid="uid://41li8oh13uyx" path="res://scenes/hud.tscn" id="6_c77mq"]
+[ext_resource type="AudioStream" uid="uid://c7s10hxifvpn7" path="res://assets/sounds/hello-sunshine.mp3" id="6_ua4qp"]
+[ext_resource type="AudioStream" uid="uid://dtw8yp3u66u2r" path="res://assets/sounds/alarm-beep.mp3" id="7_wtl4h"]
+[ext_resource type="Texture2D" uid="uid://j4p7qw8yg8ig" path="res://assets/images/clock.png" id="7_x0ksq"]
+[ext_resource type="Texture2D" uid="uid://w4oexf4xq8bm" path="res://assets/images/coin.png" id="8_xulcy"]
+[ext_resource type="AudioStream" uid="uid://bh77ip8khetn6" path="res://assets/sounds/old-ring.mp3" id="9_qxw84"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_gkg2c")
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Sky" type="ColorRect" parent="BG"]
+offset_right = 992.0
+offset_bottom = 648.0
+color = Color(0.47451, 0.827451, 1, 1)
+
+[node name="Horizon" type="Sprite2D" parent="BG"]
+modulate = Color(1, 1, 1, 0.698039)
+position = Vector2(483, 334)
+scale = Vector2(1.4211, 1.4211)
+texture = ExtResource("2_irkfj")
+
+[node name="CustomerSpawner" parent="." instance=ExtResource("3_pyo8a")]
+
+[node name="IngredientSpawner" parent="." instance=ExtResource("2_vjscj")]
+
+[node name="Stack" parent="." instance=ExtResource("3_5txv0")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("6_c77mq")]
+
+[node name="TimerIcon" type="Sprite2D" parent="UI"]
+position = Vector2(829, 93)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_x0ksq")
+
+[node name="ScoreIcon" type="Sprite2D" parent="UI"]
+position = Vector2(829, 40)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_xulcy")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ua4qp")
+volume_db = -15.0
+autoplay = true
+
+[node name="CountdownBeep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_wtl4h")
+volume_db = -10.0
+
+[node name="GameOverRing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_qxw84")
+volume_db = 5.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="add_to_stack" from="IngredientSpawner" to="Stack" method="_on_ingredient_spawner_add_to_stack"]
+[connection signal="full_stack" from="Stack" to="IngredientSpawner" method="_on_stack_full_stack"]
+[connection signal="order_successful" from="Stack" to="CustomerSpawner" method="_on_stack_order_successful"]
+[connection signal="stacked_ingredient" from="Stack" to="IngredientSpawner" method="_on_stack_stacked_ingredient"]
+[connection signal="submit_order" from="Stack" to="." method="_on_stack_submit_order"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

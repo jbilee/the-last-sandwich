@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://rv5jy72em7jl"]
+
+[ext_resource type="Texture2D" uid="uid://d23fj8b217lb6" path="res://assets/images/tomato.png" id="1_afkor"]
+
+[node name="Tomato" type="Sprite2D"]
+texture = ExtResource("1_afkor")

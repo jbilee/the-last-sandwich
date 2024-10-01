@@ -1,0 +1,152 @@
+[gd_scene load_steps=11 format=3 uid="uid://b277vmiafddf6"]
+
+[ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_grrvx"]
+[ext_resource type="FontFile" uid="uid://cg3drf2skl81a" path="res://assets/SugarpunchDEMO.otf" id="2_awkja"]
+[ext_resource type="AudioStream" uid="uid://501ciu74t1pu" path="res://assets/sounds/Happy Sun.mp3" id="2_dyu3g"]
+[ext_resource type="PackedScene" uid="uid://clfpstq6xma2l" path="res://scenes/bg.tscn" id="2_sm0ea"]
+[ext_resource type="Texture2D" uid="uid://6ojvccnpu1yp" path="res://assets/images/sandwich.png" id="3_fa53j"]
+[ext_resource type="Texture2D" uid="uid://ct433lk2m56j6" path="res://assets/images/exit.png" id="5_sl101"]
+
+[sub_resource type="Animation" id="Animation_2w4h2"]
+resource_name = "Pulsing"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0001, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.794681, 0.794681), Vector2(0.9, 0.9), Vector2(0.795, 0.795)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_s5dul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w75hk"]
+_data = {
+"Pulsing": SubResource("Animation_2w4h2"),
+"RESET": SubResource("Animation_s5dul")
+}
+
+[sub_resource type="Theme" id="Theme_txfbo"]
+default_font = ExtResource("2_awkja")
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_grrvx")
+
+[node name="BG" parent="." instance=ExtResource("2_sm0ea")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(496, 360)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("3_fa53j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_w75hk")
+}
+autoplay = "Pulsing"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -346.0
+offset_top = -131.5
+offset_right = 346.0
+offset_bottom = -44.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_txfbo")
+theme_override_colors/font_color = Color(0.690196, 0.345098, 0.301961, 1)
+theme_override_font_sizes/font_size = 86
+text = "The Last Sandwich"
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = 136.0
+offset_right = -21.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Play"
+
+[node name="HowToButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = 136.0
+offset_right = 172.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "How to"
+
+[node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 107.0
+offset_bottom = 105.0
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("5_sl101")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dyu3g")
+volume_db = -15.0
+autoplay = true
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="HowToButton" to="." method="_on_how_to_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

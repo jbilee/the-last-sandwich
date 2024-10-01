@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0dryqk0xvrk7"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_gkg2c"]
+[ext_resource type="Texture2D" uid="uid://bxgrpjxgwpghe" path="res://assets/images/table.jpg" id="2_2yg0y"]
+[ext_resource type="PackedScene" uid="uid://crnlry2m7syq8" path="res://scenes/ingredient_spawner.tscn" id="2_vjscj"]
+[ext_resource type="PackedScene" uid="uid://d3uak4owek46a" path="res://scenes/stack.tscn" id="3_5txv0"]
+[ext_resource type="PackedScene" uid="uid://dujocnubmqxou" path="res://scenes/customer_spawner.tscn" id="3_pyo8a"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_gkg2c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 458)
+scale = Vector2(1, 0.933014)
+texture = ExtResource("2_2yg0y")
+
+[node name="CustomerSpawner" parent="." instance=ExtResource("3_pyo8a")]
+
+[node name="IngredientSpawner" parent="." instance=ExtResource("2_vjscj")]
+
+[node name="Stack" parent="." instance=ExtResource("3_5txv0")]
+
+[connection signal="add_to_stack" from="IngredientSpawner" to="." method="_on_ingredient_spawner_add_to_stack"]
+[connection signal="submit_order" from="Stack" to="." method="_on_stack_submit_order"]

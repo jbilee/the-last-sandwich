@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://wpg6hcdnxuax"]
+
+[ext_resource type="Script" path="res://scripts/instructions.gd" id="1_lgv2c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlmlw"]
+bg_color = Color(0.329412, 0.243137, 0.223529, 0.905882)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="Instructions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lgv2c")
+
+[node name="Panel" type="Panel" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -419.0
+offset_top = -249.0
+offset_right = 419.0
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mlmlw")
+
+[node name="Text" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.0
+offset_top = -214.0
+offset_right = 385.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 20
+text = "Fulfill the customer's order by stacking the ingredients in the correct order from bottom to top.
+
+Use Left and Right arrow keys (or A and D) to choose the ingredient from either side.
+
+Once you're done stacking, press the Up arrow key (or W) to serve.
+
+If you stacked the wrong ingredient, use the Down arrow or S key to take it off the stack. To trash the entire stack, press Ctrl + Down (or S).
+
+You can also discard the next ingredient in the left or right queue by pressing Ctrl + Left/Right (or A/D)."
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -75.0
+offset_right = 45.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj8s8jb43uykx"]
+
+[ext_resource type="Script" path="res://scripts/money_effect.gd" id="1_f8nss"]
+[ext_resource type="Texture2D" uid="uid://tlyiykgrjfj8" path="res://assets/images/earnings.png" id="2_3r86e"]
+[ext_resource type="AudioStream" uid="uid://ovoig7f1ji5y" path="res://assets/sounds/chaching.mp3" id="3_ukxwv"]
+
+[sub_resource type="Animation" id="Animation_fcbcn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1ppa7"]
+resource_name = "Slide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmnif"]
+_data = {
+"RESET": SubResource("Animation_fcbcn"),
+"Slide": SubResource("Animation_1ppa7")
+}
+
+[node name="MoneyEffect" type="Node2D"]
+position = Vector2(337, 104)
+script = ExtResource("1_f8nss")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_3r86e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vmnif")
+}
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ukxwv")
+autoplay = true

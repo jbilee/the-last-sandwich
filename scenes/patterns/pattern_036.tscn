@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbkyfpm2cg3ch"]
+
+[ext_resource type="Texture2D" uid="uid://gii0fk1rjnhp" path="res://assets/images/bread.png" id="1_2wbs6"]
+[ext_resource type="Texture2D" uid="uid://bfgeoqcvd7x1p" path="res://assets/images/cheese.png" id="2_guspf"]
+[ext_resource type="Texture2D" uid="uid://nk33fpvpnjo7" path="res://assets/images/meat.png" id="3_6gf03"]
+[ext_resource type="Texture2D" uid="uid://dbhjwaym3f2y5" path="res://assets/images/lettuce.png" id="4_betqj"]
+[ext_resource type="Texture2D" uid="uid://d23fj8b217lb6" path="res://assets/images/tomato.png" id="5_2wulh"]
+
+[node name="Pattern36" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2wbs6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
+texture = ExtResource("3_6gf03")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("2_guspf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(0, -45)
+texture = ExtResource("4_betqj")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(0, -60)
+texture = ExtResource("5_2wulh")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(0, -75)
+texture = ExtResource("2_guspf")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(0, -90)
+texture = ExtResource("3_6gf03")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(0, -105)
+texture = ExtResource("1_2wbs6")

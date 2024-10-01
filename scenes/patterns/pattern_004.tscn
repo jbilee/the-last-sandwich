@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvk3lhqqhxvaa"]
+
+[ext_resource type="Texture2D" uid="uid://gii0fk1rjnhp" path="res://assets/images/bread.png" id="1_osun5"]
+[ext_resource type="Texture2D" uid="uid://d23fj8b217lb6" path="res://assets/images/tomato.png" id="2_7lg6g"]
+
+[node name="Pattern4" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_osun5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
+texture = ExtResource("2_7lg6g")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("1_osun5")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0fwrb62qs2fc"]
+
+[ext_resource type="Texture2D" uid="uid://gii0fk1rjnhp" path="res://assets/images/bread.png" id="1_pvlhh"]
+[ext_resource type="Texture2D" uid="uid://nk33fpvpnjo7" path="res://assets/images/meat.png" id="2_xyj0w"]
+
+[node name="Pattern16" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pvlhh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
+texture = ExtResource("2_xyj0w")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("1_pvlhh")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(0, -45)
+texture = ExtResource("2_xyj0w")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(0, -60)
+texture = ExtResource("1_pvlhh")

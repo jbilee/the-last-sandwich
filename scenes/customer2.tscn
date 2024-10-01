@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://xe2xeigqs3is"]
+
+[ext_resource type="Script" path="res://scripts/customer.gd" id="1_2dm3g"]
+[ext_resource type="Texture2D" uid="uid://pjp3ul5d8p7m" path="res://assets/images/customer2.png" id="2_qgyb0"]
+[ext_resource type="Texture2D" uid="uid://1csv6pcnxmg8" path="res://assets/images/bubble.png" id="3_mkhof"]
+
+[sub_resource type="Animation" id="Animation_ct4pr"]
+resource_name = "Bounce"
+length = 0.28
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.2, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(500, 270), Vector2(500, 250), Vector2(500, 270), Vector2(500, 250), Vector2(500, 270)]
+}
+
+[sub_resource type="Animation" id="Animation_sttwb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(500, 270)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Avatar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_3q13g"]
+resource_name = "Shake"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(500, 270), Vector2(480, 270), Vector2(500, 270), Vector2(480, 270), Vector2(500, 270)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Avatar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0.47, 0.47), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mq53"]
+_data = {
+"Bounce": SubResource("Animation_ct4pr"),
+"RESET": SubResource("Animation_sttwb"),
+"Shake": SubResource("Animation_3q13g")
+}
+
+[node name="Customer2" type="Node2D"]
+script = ExtResource("1_2dm3g")
+
+[node name="Avatar" type="Sprite2D" parent="."]
+position = Vector2(500, 270)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qgyb0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7mq53")
+}
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(160.466, 218.035)
+scale = Vector2(1.29779, 1.29779)
+texture = ExtResource("3_mkhof")
